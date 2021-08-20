@@ -18,6 +18,31 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
+app.get('/venues', (req, res) => {
+    res.render('venues')
+})
+
+app.get('/leaderboard', (req, res) => {
+    res.render('leaderboard')
+})
+
+app.get('/schedule', (req, res) => {
+    res.render('schedule')
+})
+
+app.get('/information', (req, res) => {
+    res.render('information')
+})
+
+app.get('/social', (req, res) => {
+    res.render('social')
+})
+
+
+app.get('/legends', (req, res) => {
+    res.render('legends')
+})
+
 app.listen(3000, () => {
     console.log("Listening on port 3000");
 })
