@@ -1,0 +1,25 @@
+<%# Using ejs-mate we can make this template for all the pages and insert any other ejs file with only the body %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aces Cracked Entertainment</title>
+</head>
+
+<body>
+    <%# Include path to navbar file %>
+    <%- include('../partials/navbar') %>
+
+    <%# Use this EJS Syntax to include the body of the templates that use this boilerplate %>
+    <main>
+        <%- body %>
+    </main>
+
+    <%# Include path to footer %>
+    <%- include('../partials/footer') %>
+</body>
+
+</html>

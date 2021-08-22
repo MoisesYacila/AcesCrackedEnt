@@ -1,6 +1,7 @@
 //Require dependencies and call express
 const express = require('express');
 const path = require('path');
+const ejsMate = require('ejs-mate');
 const app = express();
 
 //Set up our views folder for templates, and public directory to serve static files.
@@ -11,9 +12,15 @@ app.use(express.static(path.join(__dirname, 'public')))
 //We need to include this middleware to get req.body from POST requests
 app.use(express.urlencoded({ extended: true }));
 
-//SSet up template engine as EJS
-app.set('view engine', 'ejs');
+const o = {
+    age: 23
+}
 
+//Set up template engine as EJS, and use ejsMate for the boilerplate
+app.set('view engine', 'ejs');
+app.engine('ejs', ejsMate);
+
+//For now we're simply rendering templates
 app.get('/', (req, res) => {
     res.render('home')
 })
