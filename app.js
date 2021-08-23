@@ -12,10 +12,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 //We need to include this middleware to get req.body from POST requests
 app.use(express.urlencoded({ extended: true }));
 
-const o = {
-    age: 23
-}
-
 //Set up template engine as EJS, and use ejsMate for the boilerplate
 app.set('view engine', 'ejs');
 app.engine('ejs', ejsMate);
@@ -41,10 +37,21 @@ app.get('/information', (req, res) => {
     res.render('information')
 })
 
+app.get('/information/partners', (req, res) => {
+    res.render('partners')
+})
+
+app.get('/information/players', (req, res) => {
+    res.render('players')
+})
+
+app.get('/information/blinds', (req, res) => {
+    res.render('blinds')
+})
+
 app.get('/social', (req, res) => {
     res.render('social')
 })
-
 
 app.get('/legends', (req, res) => {
     res.render('legends')
