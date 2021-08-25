@@ -1,12 +1,36 @@
-<%# Navbar for all pages %> 
-<nav>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/venues">Venues</a></li>
-        <li><a href="/leaderboard">Leaderboard</a></li>
-        <li><a href="/schedule">Schedule</a></li>
-        <li><a href="/information">Information</a></li>
-        <li><a href="/social">Social Media</a></li>
-        <li><a href="/legends">Legends</a></li>
-    </ul>
+<%# Navbar for all pages %>
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/images/logo.jpg" alt="" width="90" height="60">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/venues">Venues</a>
+                <a class="nav-link" href="/leaderboard">Leaderboard</a>
+                <a class="nav-link" href="/schedule">Schedule</a>
+                <a class="nav-link" href="/information">Information</a>
+                <a class="nav-link" href="/social">Social Media</a>
+                <a class="nav-link" href="/legends">Legends</a>
+            </div>
+            <!-- ms-auto means margin-start. Bootstrap changed left and right to start and end -->
+            <!-- This pushes these links to the right -->
+            <div class="navbar-nav ms-auto">
+                <!-- Since we passed currentUser using res.locals in app.js now we have access to the current user -->
+                <!-- We can decide which links to show depending on the login status of the user -->
+                <!-- <%# if (!currentUser) { %>
+                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="/register">Register</a>
+                <%# } else { %>
+                <a class="nav-link" href="/logout">Logout</a>
+                <%# } %> -->
+            </div>
+        </div>
+    </div>
 </nav>
