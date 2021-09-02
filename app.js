@@ -1,8 +1,26 @@
 //Require dependencies and call express
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const ejsMate = require('ejs-mate');
 const app = express();
+
+//Require models
+const Venue = require('./models/venues');
+
+//Get the url for connecting to Mongo DB
+const dbUrl = 'mongodb://localhost:27017/ace';
+
+//Mongoose initializer code
+//Mongoose.connect returns a promise, so we can handle it with .then and .catch
+mongoose.connect(dbUrl)
+    .then(() => {
+        console.log("Database connected.")
+    })
+    .catch(err => {
+        console.log("Database connection error.")
+        console.log(err)
+    })
 
 //Set up our views folder for templates, and public directory to serve static files.
 //Thanks to our path.join we can run the file from anywhere in the computer
@@ -27,6 +45,17 @@ app.get('/', (req, res) => {
 
 app.get('/venues', (req, res) => {
     res.render('venues/index')
+})
+
+//Post route for creating new venues
+app.post('/venues', async (req, res) => {
+    //Create venue using req.body, and save it to the DB
+    //It knows about venue because on the HTML form, we gave the inputs a name of venue
+    const venue = new Venue(req.body.venue);
+    venue.save();
+
+    //Redirect to venues page
+    res.redirect('/venues');
 })
 
 app.get('/venues/new', (req, res) => {

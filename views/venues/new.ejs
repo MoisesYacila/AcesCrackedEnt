@@ -9,12 +9,15 @@
         <%# To use Bootstrap's form validation tool, 
             we need to use novalidate on the form and require the inputs we want to validate.
             In our boilerplate file, we have JS Code for the logic for the input validation %>
+
         <!-- The enctype attibute set to multipart/form-data allows us to work with files -->
-        <form action="/venues" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+        <%# MUST INCLUDE enctype="multipart/form-data" TO WORK WITH MULTER %>
+
+        <form action="/venues" method="POST" novalidate class="validated-form">
             <div class="mb-3">
                 <label class="form-label" for="title">Name</label>
                 <!-- This array-like notation will make a venue object with a title attribute -->
-                <input class="form-control" type="text" id="title" name="venue[title]" required>
+                <input class="form-control" type="text" id="title" name="venue[name]" required>
                 <!-- From Bootstrap for text under the input-->
                 <div class="valid-feedback">
                     Looks good!
