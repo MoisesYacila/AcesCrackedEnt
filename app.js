@@ -26,7 +26,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/venues', (req, res) => {
-    res.render('venues')
+    res.render('venues/index')
+})
+
+app.get('/venues/new', (req, res) => {
+    res.render('venues/new')
 })
 
 app.get('/leaderboard', (req, res) => {
