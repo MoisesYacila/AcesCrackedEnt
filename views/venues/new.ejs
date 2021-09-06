@@ -51,6 +51,25 @@
                 </div>
             </div>
 
+            <div class="mb-3">
+                <label class="form-label" for="url">URL</label>
+                <!-- This array-like notation will make a venue object with a state attribute -->
+                <input class="form-control" type="text" id="url" name="venue[url]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <!-- This array-like notation will make a campgound object with a title attribute -->
+                <textarea class="form-control" type="text" id="description" name="venue[description]"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
             <%# Bootstrap file input %>
             <div class="mb-3">
                 <label for="image" class="form-label">Add Image</label>

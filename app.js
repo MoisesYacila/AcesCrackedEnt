@@ -38,13 +38,17 @@ app.engine('ejs', ejsMate);
 //Thanks to our path.join we can run the file from anywhere in the computer
 app.use(express.static(path.join(__dirname, 'public')))
 
-//For now we're simply rendering templates
+
 app.get('/', (req, res) => {
     res.render('home')
 })
 
-app.get('/venues', (req, res) => {
-    res.render('venues/index')
+app.get('/venues', async (req, res) => {
+    //Get all the venues
+    const venues = await Venue.find({});
+
+    //Render venues page, and pass the venues from DB
+    res.render('venues/index', { venues });
 })
 
 //Post route for creating new venues

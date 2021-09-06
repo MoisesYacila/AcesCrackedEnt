@@ -14,7 +14,10 @@ const ImageSchema = new Schema({
 const VenueSchema = new Schema({
     name: String,
     address: String,
+    city: String,
     state: String,
+    description: String,
+    url: String
     //ADD USER
 })
 
