@@ -29,7 +29,14 @@
                         <%= venue.address %>, <%= venue.city %>, <%= venue.state %>
                     </small>
                 </p>
-                <a href="<%= venue.url %>" class="btn btn-primary">View <%= venue.name %></a>
+                <a href="<%= venue.url %>" class="btn btn-success">View <%= venue.name %></a>
+                <a href="/venues/<%= venue._id %>/edit" class="card-link btn btn-success">Edit</a>
+
+                <%# Form to delete a venue, with method-override we make it a DELETE request
+                     display: inline, so both buttons can be on the same line %>
+                <form class="d-inline" action="/venues/<%= venue._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
             </div>
         </div>
     </div>

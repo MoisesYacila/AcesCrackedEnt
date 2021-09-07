@@ -1,0 +1,95 @@
+<%# Call layout and pass the path where our boilerplate file is. We don't need to specify .ejs
+    This will make the rest of this file the 'body' on the boilerplate file %>
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+    <h1 class="text-center">Edit Venue</h1>
+    <%# offset-3 allows us to place the content in the middle instead of the left %>
+    <div class="col-6 offset-3">
+        <%# To use Bootstrap's form validation tool, 
+                we need to use novalidate on the form and require the inputs we want to validate.
+                In our boilerplate file, we have JS Code for the logic for the input validation %>
+
+        <!-- The enctype attibute set to multipart/form-data allows us to work with files -->
+        <%# MUST INCLUDE enctype="multipart/form-data" TO WORK WITH MULTER %>
+
+        <%# After the link, we add a query string with the method PUT to send a PUT request %>
+        <%# validated-form is what we called it on our validateForm.js %>
+        <form action="/venues/<%= venue._id %>?_method=PUT" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+                <label class="form-label" for="title">Name</label>
+                <!-- This array-like notation will make a venue object with a title attribute -->
+                <input class="form-control" type="text" id="title" name="venue[name]" value="<%= venue.name %>"
+                    required>
+                <!-- From Bootstrap for text under the input-->
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="address">Address</label>
+                <!-- This array-like notation will make a venue object with a location attribute -->
+                <input class="form-control" type="text" id="address" name="venue[address]" value="<%= venue.address %>"
+                    required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="city">City</label>
+                <!-- This array-like notation will make a venue object with a city attribute -->
+                <input class="form-control" type="text" id="city" name="venue[city]" value="<%= venue.city %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="state">State</label>
+                <!-- This array-like notation will make a venue object with a state attribute -->
+                <input class="form-control" type="text" id="state" name="venue[state]" value="<%= venue.state %>"
+                    required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="url">URL</label>
+                <!-- This array-like notation will make a venue object with a state attribute -->
+                <input class="form-control" type="text" id="url" name="venue[url]" value="<%= venue.url %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <!-- This array-like notation will make a campgound object with a title attribute -->
+                <textarea class="form-control" type="text" id="description" name="venue[description]"
+                    required><%= venue.description %></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <%# Bootstrap file input %>
+            <div class="mb-3">
+                <label for="image" class="form-label">Add Image</label>
+                <input class="form-control" type="file" id="image" name="image">
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-success" type="submit">Save</button>
+            </div>
+
+            <%# Link back to all venues %>
+            <div class="mb-3">
+                <a href="/venues">All Venues</a>
+            </div>
+
+        </form>
+    </div>
+</div>

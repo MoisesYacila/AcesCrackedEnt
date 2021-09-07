@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const ejsMate = require('ejs-mate');
+const methodOverride = require('method-override');
 const app = express();
 
 //Require models
@@ -36,7 +37,10 @@ app.engine('ejs', ejsMate);
 
 //Setting our public directory to serve our static files
 //Thanks to our path.join we can run the file from anywhere in the computer
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
+
+//This middleware allows us to send any type of HTTP request from a HTML form
+app.use(methodOverride('_method'));
 
 
 app.get('/', (req, res) => {
@@ -62,8 +66,31 @@ app.post('/venues', async (req, res) => {
     res.redirect('/venues');
 })
 
+//Render new venue form
 app.get('/venues/new', (req, res) => {
     res.render('venues/new')
+})
+
+//Render edit form ':' indicates that id is a variable
+app.get('/venues/:id/edit', async (req, res) => {
+    //Get the id from the link and find the venue to load the information on the edit page
+    const { id } = req.params;
+    const venue = await Venue.findById(id);
+
+    //Pass venue object to EJS
+    res.render('venues/edit', { venue });
+})
+
+//Edit route ':' indicates that id is a variable
+app.put('/venues/:id', async (req, res) => {
+    const { id } = req.params;
+
+    //Second argument uses JS Spread syntax, so it will take out whatever is in the object
+    //So ...req.body.venue === name: "name", address="address" and so on
+    const venue = await Venue.findByIdAndUpdate(id, { ...req.body.venue });
+
+    //After updating, redirect to venues page
+    res.redirect('/venues');
 })
 
 app.get('/leaderboard', (req, res) => {
