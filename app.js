@@ -93,6 +93,16 @@ app.put('/venues/:id', async (req, res) => {
     res.redirect('/venues');
 })
 
+//Delete route for venues ':' indicates that id is a variable
+app.delete('/venues/:id', async (req, res) => {
+    //Get id from the URL, and delete from DB
+    const { id } = req.params;
+    await Venue.findByIdAndDelete(id);
+
+    //Redirect to venues page
+    res.redirect('/venues');
+})
+
 app.get('/leaderboard', (req, res) => {
     res.render('leaderboard')
 })
