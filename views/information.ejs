@@ -2,7 +2,10 @@
     This will make the rest of this file the 'body' on the boilerplate file %>
 <% layout('layouts/boilerplate') %>
 
-<h1>Information</h1>
+<h1 class="text-center mb-3">Information</h1>
 
-<h2><a href="/information/partners">Partners</a></h2>
-<h2><a href="/information/players">Players</a></h2>
+<%# Can do col & rows here %>
+<section class="text-center">
+    <a href="/information/partners" class="btn btn-primary btn-lg">Partners</a>
+    <a href="/information/players" class="btn btn-primary btn-lg">Players</a>
+</section>
